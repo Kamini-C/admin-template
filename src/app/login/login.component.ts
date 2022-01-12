@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../shared/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,19 +16,27 @@ export class LoginComponent implements OnInit {
     password : new FormControl(''),
   });
 
-  constructor(private toastr: ToastrService, private route : Router) { }
+  constructor(private toastr: ToastrService, private route : Router, private loginservice: LoginService) { }
 
   ngOnInit(): void {
   }
 
   submit(){
-    if(this.loginForm.value.email=="daman@o7services.com" && this.loginForm.value.password=="123456")
-    {
-      this.toastr.success('Success','Login Successfully');
-      this.route.navigateByUrl('/layout/home')
-    }else{
-      this.toastr.error('Error','Invalid Credentials')
-    }
+    // if(this.loginForm.value.email=="daman@o7services.com" && this.loginForm.value.password=="123456")
+    // {
+    //   this.toastr.success('Success','Login Successfully');
+    //   this.route.navigateByUrl('/layout/home')
+    // }else{
+    //   this.toastr.error('Error','Invalid Credentials')
+    // }
+    this.loginservice.login(this.loginForm.value).subscribe(
+      (res:any)=>{
+        console.log(res)
+      },
+      err=>{
+        console.log(err)
+      }
+    )
   }
 
 }
