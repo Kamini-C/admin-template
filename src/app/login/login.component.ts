@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { UserauthService } from '../shared/auth/userauth.service';
 import { LoginService } from '../shared/login/login.service';
 
 @Component({
@@ -12,16 +13,38 @@ import { LoginService } from '../shared/login/login.service';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    email : new FormControl(''),
-    password : new FormControl(''),
+    email: new FormControl(''),
+    password: new FormControl(''),
   });
 
-  constructor(private toastr: ToastrService, private route : Router, private loginservice: LoginService) { }
+  constructor(private toastr: ToastrService, private route: Router, private loginservice: LoginService, private userauth: UserauthService) { }
 
   ngOnInit(): void {
+    //console.log(this.userauth.getToken())
+    if (this.userauth.getToken() != null) {
+      this.route.navigateByUrl('/layout/home')
+    }
   }
 
-  submit(){
+  submit() {
+    this.loginservice.login(this.loginForm.value).subscribe(
+      (res: any) => {
+        // console.log(res.response.status)
+        let resstatus = res.response.status
+        if (resstatus === true) {
+          this.userauth.setdata(res.response)
+          this.toastr.success('Success', 'Login Successfully');
+          this.route.navigateByUrl('/layout/home')
+        }
+        else {
+          this.toastr.error('Error', 'Invalid Credentials')
+        }
+      },
+      err => {
+        console.log(err)
+        this.toastr.error('Error', 'Invalid Credentials')
+      }
+    )
     // if(this.loginForm.value.email=="daman@o7services.com" && this.loginForm.value.password=="123456")
     // {
     //   this.toastr.success('Success','Login Successfully');
@@ -29,14 +52,6 @@ export class LoginComponent implements OnInit {
     // }else{
     //   this.toastr.error('Error','Invalid Credentials')
     // }
-    this.loginservice.login(this.loginForm.value).subscribe(
-      (res:any)=>{
-        console.log(res)
-      },
-      err=>{
-        console.log(err)
-      }
-    )
   }
 
 }
