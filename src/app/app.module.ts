@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
+import { ListstudentComponent } from './students/liststudent/liststudent.component';
+import { ViewstudentComponent } from './students/viewstudent/viewstudent.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { RegisterComponent } from './register/register.component';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListstudentComponent,
+    ViewstudentComponent
   ],
   imports: [
     BrowserModule,

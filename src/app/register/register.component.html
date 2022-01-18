@@ -9,18 +9,18 @@
             <h6 class="m-0 font-weight-bold text-primary">New Registration</h6>
         </div>
         <div class="card-body">
-            <form action="" (submit)="submitRegister()">
+            <form (submit)="submitRegister()">
                 <div class="form-group">
                     <label for="userName">Name: </label>
-                    <input type="text" name="userName" class="form-control">
+                    <input type="text" #name="ngModel" [(ngModel)]="registerFormModel.name"  name="name" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="userEmail">Email: </label>
-                    <input type="email" name="userEmail" class="form-control">  
+                    <input type="email" #email="ngModel" [(ngModel)]="registerFormModel.email" name="email" class="form-control">  
                 </div>
                 <div class="form-group">
                     <label for="userPassword">Password: </label>
-                    <input type="password" name="userPassword" class="form-control">
+                    <input type="password" #password="ngModel" [(ngModel)]="registerFormModel.password" name="password" class="form-control">
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Submit" class="btn btn-primary d-block mx-auto">
