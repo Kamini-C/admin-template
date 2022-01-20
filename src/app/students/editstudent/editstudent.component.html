@@ -1,0 +1,36 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Register</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">New Registration</h6>
+        </div>
+        <div class="card-body">
+            <form (submit)="submitUpdate()">
+                <div class="form-group">
+                    <label for="userName">Name: </label>
+                    <input type="text" #name="ngModel" [(ngModel)]="registerFormModel.name" name="name"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email: </label>
+                    <input type="email" #email="ngModel" [(ngModel)]="registerFormModel.email" name="email"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="userPassword">Password: </label>
+                    <input type="password" #password="ngModel" [(ngModel)]="registerFormModel.password" name="password"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary d-block mx-auto">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

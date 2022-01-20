@@ -27,4 +27,12 @@ export class AuthService {
     var header_object= new HttpHeaders().set('Authorization','Bearer '+this.Token);
     return this.http.get(this.baseUrl+"/getStudentById/"+id,{headers:header_object})
    }
+   deleteStudent(id:number){
+    var header_object= new HttpHeaders().set('Authorization','Bearer '+this.Token);
+    return this.http.delete(this.baseUrl+"/deleteStudent/"+id,{headers:header_object}) 
+   }
+   updateStudent(id:any,form:any){
+    var header_object= new HttpHeaders().set('Authorization','Bearer '+this.Token);
+    return this.http.post(this.baseUrl+"/updateStudent/"+id,form,{headers:header_object})
+   }
 }

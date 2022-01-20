@@ -18,6 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { ListstudentComponent } from './students/liststudent/liststudent.component';
 import { ViewstudentComponent } from './students/viewstudent/viewstudent.component';
+import { EditstudentComponent } from './students/editstudent/editstudent.component';
+import { AddbrandComponent } from './brand/addbrand/addbrand.component';
+import { ListbrandComponent } from './brand/listbrand/listbrand.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { ViewstudentComponent } from './students/viewstudent/viewstudent.compone
     SidebarComponent,
     RegisterComponent,
     ListstudentComponent,
-    ViewstudentComponent
+    ViewstudentComponent,
+    EditstudentComponent,
+    AddbrandComponent,
+    ListbrandComponent
   ],
   imports: [
     BrowserModule,

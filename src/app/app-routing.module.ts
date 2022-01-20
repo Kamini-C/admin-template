@@ -5,6 +5,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { EditstudentComponent } from './students/editstudent/editstudent.component';
 import { ListstudentComponent } from './students/liststudent/liststudent.component';
 import { ViewstudentComponent } from './students/viewstudent/viewstudent.component';
 
@@ -15,7 +16,8 @@ const routes: Routes = [
     {path:'home', component: DashboardComponent},
     {path:'register', component: RegisterComponent},
     {path: 'liststudent', component: ListstudentComponent},
-    {path: 'viewstudent/:id', component: ViewstudentComponent}
+    {path: 'viewstudent/:id', component: ViewstudentComponent},
+    {path: 'editstudent/:id', component: EditstudentComponent}
   ]},
   {path:'**', component: ErrorPageComponent}
 ];
