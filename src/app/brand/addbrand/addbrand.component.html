@@ -1,1 +1,29 @@
-<p>addbrand works!</p>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Brand</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Add Brand</h6>
+        </div>
+        <div class="card-body">
+            <form (submit)="submitBrand()" [formGroup]="brand">
+                <div class="form-group">
+                    <label for="userName">Brand Name: </label>
+                    <input type="text" class="form-control" formControlName="brand_name">
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Brand Logo: </label>
+                    <input type="file" class="form-control" (change)="uploadLogo($event)">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary d-block mx-auto">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

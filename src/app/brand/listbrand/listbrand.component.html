@@ -1,1 +1,30 @@
-<p>listbrand works!</p>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Brands</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">View Brands</h6>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <tr>
+                    <td>Image</td>
+                    <td>Brand Name</td>
+                    <!-- <td colspan="3" class="text-center">Actions</td> -->
+                </tr>
+                <tr *ngFor="let brand of brands">
+                    <td>{{brand['brand_logo']}}</td>
+                    <td>{{brand['brand_name'] | uppercase}}</td>
+                    <!-- <td><a><i class="fa fa-eye"></i></a></td>
+                    <td><a><i class="fa fa-edit"></i></a></td>
+                    <td><i class="fa fa-trash"></i></td> -->
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

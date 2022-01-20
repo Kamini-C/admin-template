@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddbrandComponent } from './brand/addbrand/addbrand.component';
+import { ListbrandComponent } from './brand/listbrand/listbrand.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -17,7 +19,9 @@ const routes: Routes = [
     {path:'register', component: RegisterComponent},
     {path: 'liststudent', component: ListstudentComponent},
     {path: 'viewstudent/:id', component: ViewstudentComponent},
-    {path: 'editstudent/:id', component: EditstudentComponent}
+    {path: 'editstudent/:id', component: EditstudentComponent},
+    {path: 'addbrand', component: AddbrandComponent},
+    {path: 'listbrand', component: ListbrandComponent}
   ]},
   {path:'**', component: ErrorPageComponent}
 ];
