@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserauthService } from '../shared/auth/userauth.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,12 +8,9 @@ import { UserauthService } from '../shared/auth/userauth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private userauth : UserauthService, private router : Router) { }
+  constructor() { }
 
   ngOnInit(): void {
-    if(this.userauth.getToken() == null){
-      this.router.navigateByUrl('/login')
-    }
   }
 
 }
