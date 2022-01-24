@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/shared/user/auth.service';
 import Swal from 'sweetalert2';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-liststudent',
@@ -13,6 +15,23 @@ export class ListstudentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStudent()
+  }
+
+  public exportPdf(): void{
+    let DATA:any = document.getElementById('pdfContent');
+      
+    html2canvas(DATA).then(canvas => {
+        
+        let fileWidth = 350;
+        let fileHeight = canvas.height * fileWidth / canvas.width;
+        
+        const FILEURI = canvas.toDataURL('image/png')
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 10;
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+        
+        PDF.save('angular-student-list.pdf');
+    });
   }
   getStudent(){
     this.auth.getStudents().subscribe(

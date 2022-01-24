@@ -35,4 +35,5 @@ export class AuthService {
     var header_object = new HttpHeaders().set('Authorization', 'Bearer ' + this.Token);
     return this.http.post(this.baseUrl + "/updateStudent/" + id, form,{ headers: header_object })
   }
+  
 }
