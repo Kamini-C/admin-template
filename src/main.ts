@@ -11,8 +11,13 @@ if (environment.production) {
 export function getBaseUrl(){
   return 'https://hsp.krishnasmartsystem.com/api_project/public/api';
 }
+export function getFileUrl(){
+  return 'https://hsp.krishnasmartsystem.com/api_project/public';
+}
 const providers = [
-  {provide: 'baseUrl', useFactory: getBaseUrl, deps:[]}
+  {provide: 'baseUrl', useFactory: getBaseUrl, deps:[]},
+  {provide: 'fileUrl', useFactory: getFileUrl, deps:[]}
+
 ]
 
 platformBrowserDynamic(providers).bootstrapModule(AppModule)

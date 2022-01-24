@@ -11,13 +11,15 @@
         <div class="card-body">
             <table class="table">
                 <tr>
-                    <td>Image</td>
                     <td>Brand Name</td>
+                    <td>Image</td>
                     <!-- <td colspan="3" class="text-center">Actions</td> -->
                 </tr>
                 <tr *ngFor="let brand of brands">
-                    <td>{{brand['brand_logo']}}</td>
                     <td>{{brand['brand_name'] | uppercase}}</td>
+                    <td> 
+                        <img [src]="sanitizerUrl(brand['brand_logo'])" alt="{{brand['brand_name']}}" height="50">
+                    </td>
                     <!-- <td><a><i class="fa fa-eye"></i></a></td>
                     <td><a><i class="fa fa-edit"></i></a></td>
                     <td><i class="fa fa-trash"></i></td> -->
