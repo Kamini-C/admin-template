@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/user/auth.service';
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import * as XLSX from 'xlsx'
 
 @Component({
   selector: 'app-liststudent',
@@ -16,7 +17,18 @@ export class ListstudentComponent implements OnInit {
   ngOnInit(): void {
     this.getStudent()
   }
+  public exportExcel(): void{
+    /* table id is passed over here */   
+    let element = document.getElementById('pdfContent'); 
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, "angular-student-list.xlsx");
+  }
   public exportPdf(): void{
     let DATA:any = document.getElementById('pdfContent');
       
@@ -24,12 +36,10 @@ export class ListstudentComponent implements OnInit {
         
         let fileWidth = 350;
         let fileHeight = canvas.height * fileWidth / canvas.width;
-        
-        const FILEURI = canvas.toDataURL('image/png')
+        const FILEURL = canvas.toDataURL('image/png')
         let PDF = new jsPDF('p', 'mm', 'a4');
         let position = 10;
-        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
-        
+        PDF.addImage(FILEURL, 'PNG', 0, position, fileWidth, fileHeight)
         PDF.save('angular-student-list.pdf');
     });
   }
