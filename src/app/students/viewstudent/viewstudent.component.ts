@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/shared/user/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/shared/user/auth.service';
 })
 export class ViewstudentComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private auth: AuthService) { }
+  constructor(private route: ActivatedRoute, private auth: AuthService, private spinner: NgxSpinnerService) { }
   id:any
   students:any
 
@@ -18,12 +19,15 @@ export class ViewstudentComponent implements OnInit {
     this.getstudent()
   }
  getstudent(){
+   this.spinner.show()
   this.auth.getStudentsById(this.id).subscribe(
     (res:any)=>{
+      this.spinner.hide()
       console.log(res.response.data)
       this.students = res.response.data
     },
     err=>{
+      this.spinner.hide()
       this.students = []
     }
   )

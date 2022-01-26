@@ -1,3 +1,7 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#4e73df" type="line-spin-clockwise-fade"
+    [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -7,10 +11,10 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold d-inline text-primary">View Students</h6>
-            <button class="btn btn-primary d-inline float-right" (click)="exportPdf()">PDF </button>
+            <button class="btn btn-primary d-inline float-right ml-1" (click)="exportPdf()">PDF </button>
             <button class="btn btn-primary d-inline float-right" (click)="exportExcel()">Excel</button>
         </div>
-        
+
         <div class="card-body">
             <table class="table" id="pdfContent">
                 <tr>
@@ -24,7 +28,8 @@
                     <td><a [routerLink]="['/layout/viewstudent',stu['id']]"><i class="fa fa-eye"></i></a></td>
                     <td><a *ngIf="stu['email'] != 'daman@o7services.coms'"
                             [routerLink]="['/layout/editstudent',stu['id']]"><i class="fa fa-edit"></i></a></td>
-                    <td><i *ngIf="stu['email'] != 'daman@o7services.coms'" (click)="delete(stu['id'])" class="fa fa-trash"></i></td>
+                    <td><i *ngIf="stu['email'] != 'daman@o7services.coms'" (click)="delete(stu['id'])"
+                            class="fa fa-trash"></i></td>
                 </tr>
             </table>
         </div>

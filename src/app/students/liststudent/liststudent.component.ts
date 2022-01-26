@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import * as XLSX from 'xlsx'
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-liststudent',
@@ -12,7 +13,7 @@ import * as XLSX from 'xlsx'
 })
 export class ListstudentComponent implements OnInit {
   students =[]
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.getStudent()
@@ -44,12 +45,15 @@ export class ListstudentComponent implements OnInit {
     });
   }
   getStudent(){
+    this.spinner.show()
     this.auth.getStudents().subscribe(
       (res:any)=>{
+        this.spinner.hide()
         // console.log(res)
         this.students = res.response.data
       },
       err=>{
+        this.spinner.hide()
         this.students=[];
       }
     )

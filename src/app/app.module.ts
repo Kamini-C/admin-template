@@ -21,6 +21,7 @@ import { ViewstudentComponent } from './students/viewstudent/viewstudent.compone
 import { EditstudentComponent } from './students/editstudent/editstudent.component';
 import { AddbrandComponent } from './brand/addbrand/addbrand.component';
 import { ListbrandComponent } from './brand/listbrand/listbrand.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ListbrandComponent } from './brand/listbrand/listbrand.component';
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

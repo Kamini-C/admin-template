@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { UserauthService } from '../shared/auth/userauth.service';
 import { LoginService } from '../shared/login/login.service';
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private toastr: ToastrService, private route: Router, private loginservice: LoginService, private userauth: UserauthService) { }
+  constructor(private toastr: ToastrService, private route: Router, private loginservice: LoginService, private userauth: UserauthService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     //console.log(this.userauth.getToken())
@@ -27,9 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
+    this.spinner.show()
     this.loginservice.login(this.loginForm.value).subscribe(
       (res: any) => {
         // console.log(res.response.status)
+        this.spinner.hide()
         let resstatus = res.response.status
         if (resstatus === true) {
           this.userauth.setdata(res.response)
@@ -41,7 +44,8 @@ export class LoginComponent implements OnInit {
         }
       },
       err => {
-        console.log(err)
+        // console.log(err)
+        this.spinner.hide()
         this.toastr.error('Error', 'Invalid Credentials')
       }
     )
